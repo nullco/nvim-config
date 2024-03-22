@@ -180,6 +180,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Other terminal mode useful keybindings. e.g. For windows, etc
+vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
+vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
+vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
+vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -292,6 +299,15 @@ require('lazy').setup({
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
       }
+    end,
+  },
+
+  { -- Toggle terminals easily
+
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      require('toggleterm').setup()
     end,
   },
 
