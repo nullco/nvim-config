@@ -89,6 +89,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -301,6 +304,8 @@ require('lazy').setup({
     config = function()
       require('toggleterm').setup {
         open_mapping = [[<C-\>]],
+        direction = 'float',
+        shade_terminals = false,
       }
     end,
   },
