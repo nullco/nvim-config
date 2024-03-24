@@ -304,7 +304,6 @@ require('lazy').setup({
     config = function()
       require('toggleterm').setup {
         open_mapping = [[<C-\>]],
-        direction = 'float',
         shade_terminals = false,
       }
     end,
@@ -318,15 +317,13 @@ require('lazy').setup({
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
   { -- Files tree
-    'nvim-tree/nvim-tree.lua',
-    version = '*',
-    lazy = false,
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
     dependencies = {
+      'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
     },
-    config = function()
-      require('nvim-tree').setup {}
-    end,
   },
 
   { -- Fuzzy Finder (files, lsp, etc)
