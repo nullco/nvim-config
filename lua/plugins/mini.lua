@@ -19,5 +19,9 @@ return {
 
     -- Autopairs
     require('mini.pairs').setup()
+
+    -- Better algorithm for buffer removal
+    -- TODO: Check what needs to be done here to make it work
+    require('mini.bufremove').setup()
   end,
 }
