@@ -24,6 +24,16 @@ return {
           separator = true,
         },
       },
+      custom_filter = function(buf_number, _)
+        -- filter out filetypes from buffer line
+        local filetypes = {
+          fugitive = {},
+        }
+        if filetypes[vim.bo[buf_number].filetype] ~= nil then
+          return false
+        end
+        return true
+      end,
     },
   },
 }
