@@ -20,4 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 --  This is equivalent to:
 --    require('Comment').setup({})
 --
-require('lazy').setup('plugins')
+require('lazy').setup('plugins', {
+  change_detection = { notify = false },
+})
