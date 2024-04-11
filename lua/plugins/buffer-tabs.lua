@@ -35,7 +35,7 @@ return {
             filetype = 'NvimTree',
             text = 'File Explorer',
             text_align = 'left',
-            separator = true,
+            separator = false,
           },
         },
         custom_filter = function(buf_number, _)
