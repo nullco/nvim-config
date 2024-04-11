@@ -88,6 +88,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Some terminal mode useful keybindings. e.g. For windows, etc
+vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
 vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
 vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
