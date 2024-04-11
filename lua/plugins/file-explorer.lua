@@ -1,4 +1,4 @@
--- Files tree
+-- Files explorer
 return {
   'nvim-tree/nvim-tree.lua',
   dependencies = {

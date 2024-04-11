@@ -25,9 +25,22 @@ return {
       -- Autopairs
       require('mini.pairs').setup()
 
-      -- Better algorithm for buffer removal
-      -- TODO: Check what needs to be done here to make it work
-      require('mini.bufremove').setup()
+      -- Remove buffers without breaking layout
+      local bufremove = require 'mini.bufremove'
+      bufremove.setup()
+      vim.keymap.set('n', '<Leader>bd', function()
+        if vim.bo.modified then
+          local choice = vim.fn.confirm(('Save changes to %q?'):format(vim.fn.bufname()), '&Yes\n&No\n&Cancel')
+          if choice == 1 then -- Yes
+            vim.cmd.write()
+            bufremove.delete(0)
+          elseif choice == 2 then -- No
+            bufremove.delete(0, true)
+          end
+        else
+          bufremove.delete(0)
+        end
+      end, { desc = 'Delete buffer' })
     end,
   },
   {
