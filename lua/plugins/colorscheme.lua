@@ -1,11 +1,10 @@
 return {
   {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {},
+    'dracula/vim',
+    name = 'dracula',
     init = function()
-      vim.cmd.colorscheme 'tokyonight'
+      vim.g.dracula_colorterm = 0
+      vim.cmd.colorscheme 'dracula'
     end,
   },
 }
