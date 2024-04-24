@@ -21,14 +21,14 @@ return {
       },
     }
 
-    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/[C]ontinue' })
-    vim.keymap.set('n', '<leader>dj', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<leader>dl', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<leader>dk', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle [B]reakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set [B]reakpoint' })
+    end, { desc = 'Debug: Set Conditional [B]reakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
