@@ -32,7 +32,18 @@ return {
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
-    dapui.setup {}
+    dapui.setup {
+      layouts = {
+        {
+          elements = { {
+            id = 'repl',
+            size = 1.0,
+          } },
+          position = 'bottom',
+          size = 10,
+        },
+      },
+    }
 
     vim.keymap.set('n', '<Leader>dt', dapui.toggle, { desc = 'Debug: See last session result.' })
 
