@@ -21,11 +21,10 @@ return {
       },
     }
 
-    -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/[C]ontinue' })
-    vim.keymap.set('n', '<leader>dj', dap.step_into, { desc = 'Debug: Step [I]nto' })
-    vim.keymap.set('n', '<leader>dl', dap.step_over, { desc = 'Debug: [S]tep Over' })
-    vim.keymap.set('n', '<leader>dk', dap.step_out, { desc = 'Debug: Step [O]ut' })
+    vim.keymap.set('n', '<leader>dj', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>dl', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dk', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle [B]reakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -35,12 +34,13 @@ return {
     -- For more information, see |:help nvim-dap-ui|
     dapui.setup {}
 
-    vim.keymap.set('n', '<Leader>d', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', '<Leader>dt', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     require('dap-python').setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+    require('dap.ext.vscode').load_launchjs(nil, { debugpy = { 'python' } })
   end,
 }
