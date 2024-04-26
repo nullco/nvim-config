@@ -9,6 +9,7 @@ return {
   },
   config = function()
     local dap = require 'dap'
+    local dap_python = require 'dap-python'
 
     require('mason-nvim-dap').setup {
       automatic_setup = true,
@@ -32,7 +33,13 @@ return {
     vim.keymap.set('n', '<F7>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F8>', dap.step_out, { desc = 'Debug: Step Out' })
 
-    require('dap-python').setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+    -- Setup DAP for python
+    dap_python.setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+    dap_python.test_runner = 'pytest'
+    vim.keymap.set('n', '<Leader>dm', dap_python.test_method, { desc = 'Debug: Test Current [M]ethod' })
+    vim.keymap.set('n', '<Leader>dc', dap_python.test_class, { desc = 'Debug: Test Current [C]lass' })
+
+    -- Setup launch.json from vscode to support entry points per project in ./vscode/launch.json
     require('dap.ext.vscode').load_launchjs(nil, { debugpy = { 'python' } })
   end,
 }
