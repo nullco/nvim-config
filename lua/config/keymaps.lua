@@ -20,6 +20,9 @@ vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 -- Save files
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
+-- Remove all buffers
+vim.keymap.set('n', '<Leader>bd', [[:%bd | e# | bd#<CR> | ']], { desc = 'Close all buffers but current one' })
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
