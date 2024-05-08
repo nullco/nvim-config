@@ -20,7 +20,7 @@ return {
     }
 
     vim.keymap.set('n', '<Leader>dc', dap.repl.toggle, { desc = 'Debug: Toggle REPL [C]onsole' })
-    vim.keymap.set('n', '<Leader>dd', dap.terminate, { desc = 'Debug: Disconnect' })
+    vim.keymap.set('n', '<Leader>dx', dap.terminate, { desc = 'Debug: Disconnect' })
     vim.keymap.set('n', '<Leader>dr', dap.restart, { desc = 'Debug: Restart' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle [B]reakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
