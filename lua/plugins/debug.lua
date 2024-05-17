@@ -6,6 +6,7 @@ return {
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'mfussenegger/nvim-dap-python',
+    'theHamsta/nvim-dap-virtual-text'
   },
   config = function()
     local dap = require 'dap'
@@ -18,6 +19,8 @@ return {
         'debugpy',
       },
     }
+
+    require("nvim-dap-virtual-text").setup()
 
     vim.keymap.set('n', '<Leader>dc', dap.repl.toggle, { desc = 'Debug: Toggle REPL [C]onsole' })
     vim.keymap.set('n', '<Leader>dx', dap.terminate, { desc = 'Debug: Disconnect' })
