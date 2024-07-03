@@ -4,7 +4,10 @@ return {
   config = function()
     require('lualine').setup {
       options = {
-        globalstatus = true
+        globalstatus = true,
+        disabled_filetypes = {
+          "dap-repl"
+        }
       },
       sections = {
         lualine_c = {}
