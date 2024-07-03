@@ -56,7 +56,10 @@ return {
     dapui.setup()
 
     vim.keymap.set('n', '<Leader>dl', dapui.toggle, { desc = 'Debug: Show [l]ast session result' })
-    vim.keymap.set('n', '<Leader>de', dapui.eval, { desc = 'Debug: [E]valuate expression' })
+    vim.keymap.set('n', '<Leader>de', function()
+      dapui.eval()  -- to evaluate expression and open hover window
+      dapui.eval()  -- To jump to hover window
+    end, { desc = 'Debug: [E]valuate expression' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
