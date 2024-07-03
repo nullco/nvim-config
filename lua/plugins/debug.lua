@@ -3,12 +3,15 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
+    'rcarriga/nvim-dap-ui',
+    'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'mfussenegger/nvim-dap-python'
   },
   config = function()
     local dap = require 'dap'
+    local dapui = require 'dapui'
     local dap_python = require 'dap-python'
 
     require('mason-nvim-dap').setup {
@@ -32,18 +35,21 @@ return {
     vim.keymap.set('n', '<F6>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F7>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F8>', dap.step_out, { desc = 'Debug: Step Out' })
-  
 
-    -- Setup DAP
-    dap.defaults.fallback.terminal_win_cmd = 'tabnew'
+    -- Setup DAP UI
+    dapui.setup()
+
+    vim.keymap.set('n', '<Leader>dl', dapui.toggle, { desc = 'Debug: Show [l]ast session result' })
+    vim.keymap.set('n', '<Leader>de', dapui.eval, { desc = 'Debug: [E]valuate expression' })
+
+    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+    dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Setup DAP for python
     dap_python.setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
     dap_python.test_runner = 'pytest'
     vim.keymap.set('n', '<Leader>dtm', dap_python.test_method, { desc = 'Debug: Test Current [M]ethod' })
     vim.keymap.set('n', '<Leader>dtc', dap_python.test_class, { desc = 'Debug: Test Current [C]lass' })
-
-    -- Setup launch.json from vscode to support entry points per project in ./vscode/launch.json
-    require('dap.ext.vscode').load_launchjs(nil, { debugpy = { 'python' } })
   end,
 }
