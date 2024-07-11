@@ -12,6 +12,7 @@ return {
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
+    { 'nvim-telescope/telescope-file-browser.nvim'},
     { 'nvim-tree/nvim-web-devicons' },
   },
   config = function()
@@ -26,6 +27,7 @@ return {
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require("telescope").load_extension 'file_browser')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -41,6 +43,7 @@ return {
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch [B]ranches' })
     vim.keymap.set('n', '<leader>sc', builtin.git_commits, { desc = '[S]earch [C]ommits' })
+    vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 
     vim.keymap.set('n', '<leader>/', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
