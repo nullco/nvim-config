@@ -55,7 +55,7 @@ return {
     -- Setup DAP UI
     dapui.setup()
 
-    vim.keymap.set('n', '<Leader>dl', dapui.toggle, { desc = 'Debug: Show [l]ast session result' })
+    vim.keymap.set('n', '<Leader>ds', dapui.toggle, { desc = 'Debug: Toggle [s]ession' })
     vim.keymap.set('n', '<Leader>de', function()
       dapui.eval()  -- to evaluate expression and open hover window
       dapui.eval()  -- To jump to hover window
