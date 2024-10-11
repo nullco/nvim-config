@@ -102,6 +102,30 @@ return {
         { name = 'buffer'},
         { name = 'path'},
       },
+      sorting = {
+        comparators = {
+          function(e1, e2)
+            function is_gitlab_suggestion(entry)
+              return entry.completion_item.label:find('^GitLab Suggestion') ~= nil
+            end
+
+            if is_gitlab_suggestion(e1) and not is_gitlab_suggestion(e2) then
+              return true
+            elseif not is_gitlab_suggestion(e1) and is_gitlab_suggestion(e2) then
+              return false
+            end
+          end,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
     }
   end,
 }
