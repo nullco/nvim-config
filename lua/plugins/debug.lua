@@ -3,8 +3,6 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
-    'rcarriga/nvim-dap-ui',
-    'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'mfussenegger/nvim-dap-python'
@@ -21,8 +19,10 @@ return {
     vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
 
     local dap = require 'dap'
-    local dapui = require 'dapui'
     local dap_python = require 'dap-python'
+    local widgets = require('dap.ui.widgets')
+
+    dap.defaults.fallback.terminal_win_cmd = 'tabnew'
 
 
     require('mason-nvim-dap').setup {
@@ -33,6 +33,8 @@ return {
       },
     }
 
+    vim.keymap.set({'n', 'v'}, '<Leader>de', widgets.preview, { desc = 'Debug: Evalualte expression' })
+    vim.keymap.set('n', '<Leader>dp', dap.repl.toggle, { desc = 'Debug: REPL' })
     vim.keymap.set('n', '<Leader>dd', dap.terminate, { desc = 'Debug: Disconnect' })
     vim.keymap.set('n', '<Leader>dr', dap.restart, { desc = 'Debug: Restart' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle [B]reakpoint' })
@@ -50,20 +52,6 @@ return {
     dap_python.test_runner = 'pytest'
     vim.keymap.set('n', '<Leader>dtm', dap_python.test_method, { desc = 'Debug: Test Current [M]ethod' })
     vim.keymap.set('n', '<Leader>dtc', dap_python.test_class, { desc = 'Debug: Test Current [C]lass' })
-
-
-    -- Setup DAP UI
-    dapui.setup()
-
-    vim.keymap.set('n', '<Leader>ds', dapui.toggle, { desc = 'Debug: Toggle [s]ession' })
-    vim.keymap.set('n', '<Leader>de', function()
-      dapui.eval()  -- to evaluate expression and open hover window
-      dapui.eval()  -- To jump to hover window
-    end, { desc = 'Debug: [E]valuate expression' })
-
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
   end,
 }
