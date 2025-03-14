@@ -85,6 +85,7 @@ return {
       'stylua', -- Used to format Lua code
       'markdownlint', -- Used to lint markdown
       'flake8', -- Python linter
+      'ruff', -- Another python linter
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
