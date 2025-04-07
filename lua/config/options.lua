@@ -60,3 +60,6 @@ vim.opt.scrolloff = 10
 
 -- Set highlight on search
 vim.opt.hlsearch = true
+
+-- Show virtual text by default in diagnostics
+vim.diagnostic.config({ virtual_text = true })
