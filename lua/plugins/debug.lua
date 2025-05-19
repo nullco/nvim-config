@@ -31,8 +31,8 @@ return {
 
     vim.keymap.set({'n', 'v'}, '<Leader>de', widgets.preview, { desc = 'Debug: [e]valuate expression' })
     vim.keymap.set('n', '<Leader>di', dap.repl.toggle, { desc = 'Debug: [i]nteractive shell' })
-    vim.keymap.set('n', '<Leader>dt', dap.terminate, { desc = 'Debug: [t]erminate session' })
-    vim.keymap.set('n', '<Leader>dr', dap.restart, { desc = 'Debug: [r]estart session' })
+    vim.keymap.set('n', '<Leader>dst', dap.terminate, { desc = 'Debug: [t]erminate session' })
+    vim.keymap.set('n', '<Leader>dsr', dap.restart, { desc = 'Debug: [r]estart session' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: toggle [b]reakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -46,8 +46,8 @@ return {
     -- Setup DAP for python
     dap_python.setup '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
     dap_python.test_runner = 'pytest'
-    vim.keymap.set('n', '<Leader>tdm', dap_python.test_method, { desc = 'Debug: Test Nearest [M]ethod' })
-    vim.keymap.set('n', '<Leader>tdc', dap_python.test_class, { desc = 'Debug: Test nearest [C]lass' })
+    vim.keymap.set('n', '<Leader>dtm', dap_python.test_method, { desc = 'Debug: Test Nearest [M]ethod' })
+    vim.keymap.set('n', '<Leader>dtc', dap_python.test_class, { desc = 'Debug: Test nearest [C]lass' })
 
   end,
 }
