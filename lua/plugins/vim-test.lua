@@ -5,5 +5,6 @@ return {
     vim.keymap.set("n", "<leader>tc", ":TestClass<cr>", { silent = true, desc = "Tests: nearest [c]lass" })
     vim.keymap.set("n", "<leader>tm", ":TestNearest<cr>", { silent = true, desc = "Tests: nearest [m]ethod"})
     vim.keymap.set("n", "<leader>tl", ":TestLast<cr>", { silent = true, desc = "Tests: re-run [l]ast test again" })
+    vim.keymap.set("n", "<leader>ts", ":TestSuite<cr>", { silent = true, desc = "Tests: re-run [l]ast test again" })
   end,
 }
