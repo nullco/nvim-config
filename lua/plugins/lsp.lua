@@ -45,8 +45,6 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local servers = {
-      -- clangd = {},
-      -- gopls = {},
       pyright = {
         settings = {
           python = {
@@ -67,6 +65,7 @@ return {
           },
         },
       },
+      jdtls = {},
     }
 
     -- Ensure the servers and tools above are installed
