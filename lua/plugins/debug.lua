@@ -25,7 +25,7 @@ return {
       automatic_setup = true,
       handlers = {},
       ensure_installed = {
-        'debugpy',
+        'debugpy', 'java-debug-adapter'
       },
     }
 
@@ -48,6 +48,5 @@ return {
     dap_python.test_runner = 'pytest'
     vim.keymap.set('n', '<Leader>dtm', dap_python.test_method, { desc = 'Debug: Test Nearest [M]ethod' })
     vim.keymap.set('n', '<Leader>dtc', dap_python.test_class, { desc = 'Debug: Test nearest [C]lass' })
-
   end,
 }
