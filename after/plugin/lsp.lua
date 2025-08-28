@@ -36,7 +36,7 @@ vim.lsp.config("*", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable("pyright", {
+vim.lsp.config("pyright", {
   settings = {
     python = {
       analysis = {
@@ -46,7 +46,7 @@ vim.lsp.enable("pyright", {
   },
 })
 
-vim.lsp.enable("lua_ls", {
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       completion = {
@@ -57,12 +57,12 @@ vim.lsp.enable("lua_ls", {
   },
 })
 
-vim.lsp.enable('ts_ls')
-
-vim.lsp.enable('jdtls', {
+vim.lsp.config('jdtls', {
   init_options = {
     bundles = {
-      vim.fn.expand('~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar') 
+      vim.fn.expand('~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar')
     }
   },
 })
+
+vim.lsp.enable({'pyright', 'lua_ls', 'jdtls', 'ts_ls'})
