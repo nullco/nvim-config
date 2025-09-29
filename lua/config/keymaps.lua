@@ -22,8 +22,8 @@ vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 
 -- Buffer management
 vim.keymap.set('n', '<Leader>bo', [[:%bd | e# | bd#<CR> | ']], { desc = 'Close all buffers but current one' })
-vim.keymap.set('n', '<S-h>', ':bp<CR>', { desc = 'Prev buffer' })
-vim.keymap.set('n', '<S-l>', ':bn<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-h>', ':tabp<CR>', { desc = 'Prev tab' })
+vim.keymap.set('n', '<S-l>', ':tabn<CR>', { desc = 'Next tab' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
