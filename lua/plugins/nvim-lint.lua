@@ -13,8 +13,16 @@ return {
         elseif executable('flake8') then
           return lint.linters.flake8
         else
-          vim.notify('Neither ruff nor flake8 is installed, pyresolve will not work', vim.log.levels.WARN)
-          return nil
+          return {
+            cmd = "true", -- always succeeds
+            stdin = false,
+            args = {},
+            stream = "stdout",
+            ignore_exitcode = true,
+            parser = function()
+              return {}
+            end,
+          }
         end
       end
 
