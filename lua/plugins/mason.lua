@@ -21,7 +21,6 @@ return {
         'lua_ls',
         'stylua', -- Used to format Lua code
         'markdownlint', -- Used to lint markdown
-        'flake8', -- Python linter
       }
     }
   end,
