@@ -21,6 +21,7 @@ vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
 vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 
 -- Buffer management
+vim.keymap.set('n', '<Leader>bd', [[:%bd!<CR>]], { desc = 'Close all buffers' })
 vim.keymap.set('n', '<Leader>bo', [[:%bd | e# | bd#<CR> | ']], { desc = 'Close all buffers but current one' })
 vim.keymap.set('n', '<S-h>', ':tabp<CR>', { desc = 'Prev tab' })
 vim.keymap.set('n', '<S-l>', ':tabn<CR>', { desc = 'Next tab' })
