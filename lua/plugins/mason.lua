@@ -20,7 +20,6 @@ return {
         'ts_ls',
         'lua_ls',
         'stylua', -- Used to format Lua code
-        'markdownlint', -- Used to lint markdown
       }
     }
   end,
