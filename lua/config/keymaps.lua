@@ -20,6 +20,34 @@ vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
 vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
 vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 
+-- Double <Esc> in Terminal mode returns to Normal mode.
+-- A lone <Esc> is forwarded to the program running in the terminal, so apps
+-- that use <Esc> (vim, less, fzf, ...) keep working. A second <Esc> within
+-- `timeout` ms leaves Terminal mode via <C-\><C-n> instead.
+do
+  local timer
+  local timeout = 200
+
+  vim.keymap.set('t', '<Esc>', function()
+    if timer and not timer:is_closing() then
+      timer:close()
+      timer = nil
+      -- second <Esc> within the window: leave Terminal mode
+      vim.api.nvim_feedkeys(vim.keycode('<C-\\><C-n>'), 'nt', false)
+      return
+    end
+    -- first <Esc>: arm the timer and forward <Esc> to the terminal program
+    timer = vim.uv.new_timer()
+    timer:start(timeout, 0, function()
+      if timer and not timer:is_closing() then
+        timer:close()
+      end
+      timer = nil
+    end)
+    vim.api.nvim_feedkeys(vim.keycode('<Esc>'), 'nt', false)
+  end, { desc = 'Terminal: double <Esc> to Normal mode' })
+end
+
 -- Buffer management
 vim.keymap.set('n', '<Leader>bd', function()
   local cur = vim.api.nvim_get_current_buf()
