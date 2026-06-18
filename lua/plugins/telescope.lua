@@ -21,6 +21,16 @@ return {
           require('telescope.themes').get_dropdown(),
         },
       },
+      pickers = {
+        find_files = {
+          -- Show files inside hidden directories (e.g. .config/...), but
+          -- always exclude .git. `fd --hidden` already skips the cwd's .git,
+          -- but not submodule .git pointer files, so the explicit --exclude
+          -- keeps things deterministic.
+          hidden = true,
+          find_command = { 'fd', '--type', 'f', '--color', 'never', '--hidden', '--exclude', '.git' },
+        },
+      },
     }
 
     -- Enable Telescope extensions if they are installed
