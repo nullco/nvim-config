@@ -20,6 +20,10 @@ vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
 vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
 vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
 
+vim.keymap.set('n', '<leader>cp', function()
+  vim.fn.setreg('+', vim.fn.expand('%:p'))
+end, { desc = 'Copy current file path' })
+
 -- Double <Esc> in Terminal mode returns to Normal mode.
 -- A lone <Esc> is forwarded to the program running in the terminal, so apps
 -- that use <Esc> (vim, less, fzf, ...) keep working. A second <Esc> within
